@@ -32,7 +32,7 @@ export default function ProfileScreen({ navigation, route }) {
 
       try {
         console.log('Fetching user with email:', userEmail);
-        const response = await axios.get('http://192.168.10.132:3000/api/get-user', {
+        const response = await axios.get('http://192.168.174.132:3000/api/get-user', {
           params: { email: userEmail },
         });
         console.log('User fetched:', response.data);
@@ -97,7 +97,7 @@ export default function ProfileScreen({ navigation, route }) {
       try {
         console.log('Uploading profile picture for email:', userEmail);
         console.log('Selected image details:', selectedImage);
-        const uploadResponse = await axios.post('http://192.168.10.132:3000/api/upload-profile-pic', formData, {
+        const uploadResponse = await axios.post('http://192.168.174.132:3000/api/upload-profile-pic', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Accept': 'application/json',

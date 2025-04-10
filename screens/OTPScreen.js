@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import axios from 'axios';
 import { AuthContext } from '../services/AuthContext';
-import LinearGradient from 'react-native-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function OTPScreen({ navigation, route }) {
@@ -31,7 +30,7 @@ export default function OTPScreen({ navigation, route }) {
     }
 
     try {
-      const response = await axios.post('http://192.168.10.132:3000/api/verify-otp', { email, otp });
+      const response = await axios.post('http://192.168.174.132:3000/api/verify-otp', { email, otp });
       if (response.data.message === 'OTP verified successfully') {
         await login(email, mobile);
         navigation.replace('Main', { userEmail: email, userMobile: mobile });
@@ -49,8 +48,7 @@ export default function OTPScreen({ navigation, route }) {
 
     setIsResending(true);
     try {
-      // Assuming you have an endpoint to resend OTP
-      const response = await axios.post('http://192.168.10.132:3000/api/send-otp', {
+      const response = await axios.post('http://192.168.174.132:3000/api/send-otp', {
         email,
         mobile
       });
@@ -70,7 +68,7 @@ export default function OTPScreen({ navigation, route }) {
   };
 
   return (
-    <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.card}>
         <Ionicons name="lock-closed-outline" size={60} color="#4CAF50" style={styles.icon} />
         <Text style={styles.title}>Verify OTP</Text>
@@ -114,7 +112,7 @@ export default function OTPScreen({ navigation, route }) {
           </TouchableOpacity>
         )}
       </View>
-    </LinearGradient>
+    </View>
   );
 }
 
@@ -123,6 +121,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#4c669f', // Base color from your gradient
+    // To mimic gradient, you could use a single color or add nested Views with different background colors
   },
   card: {
     backgroundColor: 'white',

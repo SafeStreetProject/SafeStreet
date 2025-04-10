@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }) {
     // Fetch uploaded photos
     const fetchPhotos = async () => {
       try {
-        const response = await axios.get('http://192.168.10.132:3000/api/get-photos');
+        const response = await axios.get('http://192.168.174.132:3000/api/get-photos');
         setPhotos(response.data);
       } catch (error) {
         console.error('Error fetching photos:', error.message);
@@ -118,11 +118,11 @@ export default function HomeScreen({ navigation }) {
 
         setUploading(true);
         try {
-          const uploadResponse = await axios.post('http://192.168.10.132:3000/api/upload-photo', formData, {
+          const uploadResponse = await axios.post('http://192.168.174.132:3000/api/upload-photo', formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
           });
           Alert.alert('Success', 'Photo uploaded successfully');
-          const response = await axios.get('http://192.168.10.132:3000/api/get-photos');
+          const response = await axios.get('http://192.168.174.132:3000/api/get-photos');
           setPhotos(response.data);
         } catch (error) {
           Alert.alert('Error', 'Failed to upload photo: ' + (error.response?.data?.error || error.message));

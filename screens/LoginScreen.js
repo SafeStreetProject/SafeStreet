@@ -13,7 +13,7 @@ export default function LoginScreen({ navigation }) {
     }
 
     try {
-      const response = await axios.post('http://192.168.10.132:3000/api/send-otp', {
+      const response = await axios.post('http://192.168.174.132:3000/api/send-otp', {
         email,
         mobile,
       });
