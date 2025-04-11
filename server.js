@@ -167,7 +167,7 @@ app.post('/api/upload-profile-pic', upload.single('profilePic'), async (req, res
   }
 
   try {
-    const profilePicUrl = `/uploads/${req.file.filename}`;
+    const profilePicUrl = `/uploads_profile/${req.file.filename}`;
     const user = await User.findOneAndUpdate(
       { email },
       { profilePicUrl },
