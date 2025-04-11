@@ -75,6 +75,17 @@ const usersToInsert = [
     otpExpiry: null,
     profilePicUrl: '',
   },
+  {
+    email: 'nithinvankudothu7@mail.com',
+    mobile: '9704578271',
+    name: 'Omkar',
+    role: 'user',
+    createdAt: new Date('2025-04-10T00:00:00Z'),
+    totalUploads: 0,
+    otp: null,
+    otpExpiry: null,
+    profilePicUrl: '',
+  },
 ];
 
 async function seedUsers() {
